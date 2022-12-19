@@ -9,6 +9,6 @@ jobs:
       - name: echo a string
         run: echo "Dheeraj learning github-actions"
       - name: multiliine script
-        run:
+        run: |
           node -v
           npm -v
