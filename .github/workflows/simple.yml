@@ -15,5 +15,8 @@ jobs:
       - name: python commands
         run: |
           import platform
+          import datetime
+          now = datetime.datetime.now()
           print(platform.processor())
+          print("The current datetime is: ",now)
         shell: python
