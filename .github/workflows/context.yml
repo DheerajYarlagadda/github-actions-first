@@ -6,12 +6,14 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: dump
+        env:
+          WHAT_TO_CHECK: ${{ secrets.TEST}}
         run: |
           echo ${{ contains( 'hello', '11' ) }}
           echo ${{ startsWith( 'hello', 'he' ) }}
           echo ${{ endsWith( 'hello', '1o' ) }}
           echo ${{ format( 'Hello {0} {1} {2}', 'World', '!', '!' ) }}
-          echo &{{secrets.TEST}}
+          echo env.WHAT_TO_CHECK
   one:
     runs-on: ubuntu-20.04
     if: github.event_name == 'push'
