@@ -12,10 +12,8 @@ jobs:
         run: |
           pwd
           svn --version
-          $username=env.USERNAME
-          $password=env.PASSWORD  
-          echo $username
-          echo $password
+          echo $USERNAME
+          echo $PASSWORD
   functions: 
     runs-on: ubuntu-20.04
     steps:
