@@ -11,7 +11,7 @@ jobs:
           echo ${{ startsWith( 'hello', 'he' ) }}
           echo ${{ endsWith( 'hello', '1o' ) }}
           echo ${{ format( 'Hello {0} {1} {2}', 'World', '!', '!' ) }}
-          echo &{{secrets}}
+          echo &{{secrets.TEST}}
   one:
     runs-on: ubuntu-20.04
     if: github.event_name == 'push'
