@@ -2,6 +2,13 @@ name: Context
 on: [push, pull_request]
 
 jobs:
+  svn:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: version checkout
+        run: |
+          pwd
+          svn --version
   functions: 
     runs-on: ubuntu-20.04
     steps:
