@@ -10,6 +10,7 @@ jobs:
           USERNAME: dheeraj
           PASSWORD: xyz@1234
         run: |
+          /etc/os-release
           pwd
           svn --version
           echo $USERNAME
