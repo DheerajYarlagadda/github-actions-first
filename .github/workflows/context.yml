@@ -5,10 +5,17 @@ jobs:
   svn:
     runs-on: ubuntu-20.04
     steps:
-      - name: version checkout
+      - name: version check
+        env:
+          USERNAME: dheeraj
+          PASSWORD: xyz@1234
         run: |
           pwd
           svn --version
+          $username=env.USERNAME
+          $password=env.PASSWORD  
+          echo $username
+          echo $password
   functions: 
     runs-on: ubuntu-20.04
     steps:
