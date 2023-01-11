@@ -13,7 +13,10 @@ jobs:
           echo ${{ startsWith( 'hello', 'he' ) }}
           echo ${{ endsWith( 'hello', '1o' ) }}
           echo ${{ format( 'Hello {0} {1} {2}', 'World', '!', '!' ) }}
-          echo env.WHAT_TO_CHECK
+          echo "The GitHub Action Secret will be masked:  "
+          echo ${{ secrets.TEST }}
+          echo "Trick to echo GitHub Actions Secret:  "
+          echo ${{secrets.TEST}} | sed 's/./& /g' 
   one:
     runs-on: ubuntu-20.04
     if: github.event_name == 'push'
