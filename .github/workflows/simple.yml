@@ -1,6 +1,6 @@
 name: shell commands
 run-name: ${{github.actor}} is learning the Github Actions
-on: [push]
+on: [pull_request]
 
 jobs: 
   run-shell-command:
