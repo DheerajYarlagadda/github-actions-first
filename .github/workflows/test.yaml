@@ -1,12 +1,13 @@
 name: Test
 on: [push, pull_request]
-env: 
-  WORKSAPCE: ${{ github.workspace }}
+
 
 jobs:
   run-github-actions: 
-    runs-on: windows-latest  
+    runs-on: windows-latest 
+    env: 
+      WORKSAPCE: ${{ github.workspace }} 
     steps:
       - name: testing variables 
         run: |
-          echo ${env:WORKSPACE}
+          echo $WORKSPACE
