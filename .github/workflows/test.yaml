@@ -5,9 +5,7 @@ on: [push, pull_request]
 jobs:
   run-github-actions: 
     runs-on: windows-latest 
-    env: 
-      WORKSAPCE: ${{ github.workspace }} 
     steps:
       - name: testing variables 
         run: |
-          echo $env:WORKSPACE
+          echo ${{ github.workspace }} 
