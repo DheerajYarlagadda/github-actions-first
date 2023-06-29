@@ -41,7 +41,7 @@ jobs:
       - name: echo that PR opened
         run: |
           echo "A new PR is opened"
-          echo " ${{ steps.read-supportedos.outputs.supported-os }} "
+          echo ${{ steps.read-supportedos.outputs.supported-os }}
 
 
   Test_Deploy_Release_Package:
