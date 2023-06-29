@@ -27,6 +27,7 @@ jobs:
           else
             supported_os='["win10", "win22"]'
           fi
+          echo $supported_os
           echo "::set-output name=supported-os::$supported_os"
 
 
