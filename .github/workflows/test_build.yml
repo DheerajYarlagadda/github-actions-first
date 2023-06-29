@@ -15,10 +15,19 @@ jobs:
     runs-on: [ ubuntu-latest ]
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Read SupportedOS from JSON
         id: read-supportedos
         run: |
-          echo "read-supportedOS executed"
+          file_path="${{ github.workspace }}/github-actions-first/${{ github.head_ref }}/installCFG.json"
+          if [[ -s "$file_path" ]]; then
+            supported_os=$(cat "$file_path" | jq -r '.SupportedOS[]')
+          else
+            supported_os='["win10", "win22"]'
+          fi
+          echo "::set-output name=supported-os::$supported_os"
 
 
   Test_Deploy_QA_Package:
@@ -31,6 +40,7 @@ jobs:
       - name: echo that PR opened
         run: |
           echo "A new PR is opened"
+          echo " ${{ steps.read-supportedos.outputs.supported-os }} "
 
 
   Test_Deploy_Release_Package:
