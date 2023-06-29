@@ -1,0 +1,15 @@
+{
+    "ToolName": "Containerd v1.6.6",
+    "SupportedOS": ["win10", "win22"],
+    "ConfigFunc": ["config.ps1"],
+    "TestFunc": ["TestInstallStatus.ps1"],
+    "RequiredPackages": [ "Microsoft/CNI-plugin_amd64_v_0_3_0", "nerdctl/nerdctl-0.21.0-windows-amd64" ],
+    "EnableWin10Feature": [
+        "Containers",
+        "Microsoft-Hyper-V"
+    ],
+    "EnableWinServerFeature": [
+        "Containers",
+        "Hyper-V"
+    ]
+}
