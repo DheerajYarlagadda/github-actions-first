@@ -6,7 +6,7 @@ on:
       - opened
       - closed
     branches:
-      - main
+      - master
 
 jobs:
 
