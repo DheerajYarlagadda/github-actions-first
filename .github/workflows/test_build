@@ -1,0 +1,45 @@
+name: build, test and deploy installer package test
+
+on:
+  pull_request:
+    types:
+      - opened
+      - closed
+    branches:
+      - main
+
+jobs:
+
+  Read_SupportedOS:
+
+    runs-on: [ ubuntu-latest ]
+
+    steps:
+      - name: Read SupportedOS from JSON
+        id: read-supportedos
+        run: |
+          echo "read-supportedOS executed"
+
+
+  Test_Deploy_QA_Package:
+
+    needs: Read_SupportedOS
+    if: ${{ github.event_name == 'pull_request' && github.event.action == 'opened' }}
+    runs-on: [ ubuntu-latest ]
+
+    steps:
+      - name: echo that PR opened
+        run: |
+          echo "A new PR is opened"
+
+
+  Test_Deploy_Release_Package:
+
+    needs: Read_SupportedOS
+    if: ${{ github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged && github.event.pull_request.base.ref == 'main' }}
+    runs-on: [ ubuntu-latest ]
+
+    steps:
+      - name: echo that PR opened
+        run: |
+          echo "A new PR is opened"
