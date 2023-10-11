@@ -21,6 +21,8 @@ jobs:
           cat "$RECIPE" | jq -c '.[]' | while IFS= read -r element; do
             TARGET=$(echo "$element" | jq -r '.target')
             TARGETADDRESS=$(echo "$element" | jq -r '.targetAddress')
+            jsonObject=$(jq -n --arg target "${{ github.workspace }}/$TARGET" --arg targetAddress "$TARGETADDRESS" '{target: $target, targetAddress: $targetAddress}')
+            echo $jsonObject
             echo $TARGET
             echo $TARGETADDRESS
           done
