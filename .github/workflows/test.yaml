@@ -16,4 +16,11 @@ jobs:
       - name: testing  
         run: |
           cd  ${{ github.workspace }}
-          cat reciepe.json
+          RECIPE=${{ github.workspace }}/reciepe.json
+          jsonArray=()
+  
+          cat "$RECIPE" | jq -c '.[]' | while IFS= read -r element; do
+            TARGET=$(echo "$element" | jq -r '.target')
+            TARGETADDRESS=$(echo "$element" | jq -r '.targetAddress')
+            echo $TARGET
+            echo $TARGETADDRESS
