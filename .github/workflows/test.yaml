@@ -24,6 +24,17 @@ jobs:
           for element in data:
               element['target'] = '${{ github.workspace }}' + '/' + element['target']
           print(data)
+          with open(file_path, 'w') as file:
+              json.dump(data, file, indent=4)
+          
+      - name: check files in workspace
+        run:
+          ls -la ${{ github.workspace }}
+
+      - name: check update recipe.json file
+        run:
+          cd ${{ github.workspace }}
+          cat reciepe.json
           
       - name: testing  
         run: |
