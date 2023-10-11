@@ -17,7 +17,7 @@ jobs:
         run: |
           cd  ${{ github.workspace }}
           RECIPE=${{ github.workspace }}/reciepe.json
-          jsonArray=()
+          $jsonArray = @()
           cat "$RECIPE" | jq -c '.[]' | while IFS= read -r element; do
             TARGET=$(echo "$element" | jq -r '.target')
             TARGETADDRESS=$(echo "$element" | jq -r '.targetAddress')
@@ -27,4 +27,5 @@ jobs:
             echo $TARGET
             echo $TARGETADDRESS
           done
+          echo $jsonArray
           echo Dheeraj
