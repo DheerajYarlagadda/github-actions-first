@@ -27,8 +27,8 @@ jobs:
             echo $TARGET
             echo $TARGETADDRESS
           done
+          echo "contents of jsonArray"
           for element in "${jsonArray[@]}"
           do
-              echo "$element"
+            echo "$element"
           done
-          echo Dheeraj
