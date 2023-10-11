@@ -15,5 +15,5 @@ jobs:
         
       - name: testing  
         run: |
-          cd  ${{ github.workspace }}/github-actions-first
+          cd  ${{ github.workspace }}
           echo reciepe.json
