@@ -22,7 +22,7 @@ jobs:
               data = json.load(file)
           print(data)
           for element in data:
-              element.target = '${{ github.workspace }}'+'/'+element.target
+              element['target'] = '${{ github.workspace }}' + '/' + element['target']
           print(data)
           
       - name: testing  
