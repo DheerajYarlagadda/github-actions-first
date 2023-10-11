@@ -13,6 +13,18 @@ jobs:
         run:
           ls -la ${{ github.workspace }}
         
+      - name: using python
+        shell: python
+        run: |
+          import json
+          file_path = '${{ github.workspace }}/reciepe.json'
+          with open(file_path, 'r') as file:
+              data = json.load(file)
+          print(data)
+          for element in data:
+              element.target = '${{ github.workspace }}'+'/'+element.target
+          print(data)
+          
       - name: testing  
         run: |
           cd  ${{ github.workspace }}
@@ -28,7 +40,3 @@ jobs:
             echo $TARGETADDRESS
           done
           echo "contents of jsonArray"
-          for element in "${jsonArray[@]}"
-          do
-            echo "$element"
-          done
