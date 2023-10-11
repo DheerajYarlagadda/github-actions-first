@@ -6,6 +6,14 @@ jobs:
   run-github-actions: 
     runs-on: windows-latest 
     steps:
-      - name: testing variables 
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: check checkout
+        run:
+          ls -la ${{ github.workspace }}
+        
+      - name: testing  
         run: |
-          echo ${{ github.workspace }} 
+          cd  ${{ github.workspace }}/github-actions-first
+          echo reciepe.json
