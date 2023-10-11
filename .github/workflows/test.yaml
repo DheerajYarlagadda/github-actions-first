@@ -16,4 +16,4 @@ jobs:
       - name: testing  
         run: |
           cd  ${{ github.workspace }}
-          echo reciepe.json
+          cat reciepe.json
