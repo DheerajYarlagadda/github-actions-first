@@ -22,7 +22,7 @@ jobs:
             TARGET=$(echo "$element" | jq -r '.target')
             TARGETADDRESS=$(echo "$element" | jq -r '.targetAddress')
             jsonObject=$(jq -n --arg target "${{ github.workspace }}/$TARGET" --arg targetAddress "$TARGETADDRESS" '{target: $target, targetAddress: $targetAddress}')
-            jsonArray+=("$jsonObject")
+            jsonArray+=$jsonObject
             echo $jsonObject
             echo $TARGET
             echo $TARGETADDRESS
