@@ -32,7 +32,7 @@ jobs:
           ls -la ${{ github.workspace }}
 
       - name: check update recipe.json file
-        run:
+        run: |
           cd ${{ github.workspace }}
           cat reciepe.json
           
