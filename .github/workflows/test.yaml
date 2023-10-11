@@ -27,4 +27,4 @@ jobs:
             echo $TARGET
             echo $TARGETADDRESS
           done
-          echo $jsonArray
+          echo Dheeraj
