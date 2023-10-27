@@ -1,0 +1,22 @@
+name: build, test and deploy installer package test
+
+on:
+  push
+
+jobs:
+
+  Read_input:
+
+    runs-on: [ ubuntu-latest ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          path: uploadAction
+
+      - name: perform action
+        uses: ./uploadAction
+        with:
+          name: Dheeraj
+          echo: true
