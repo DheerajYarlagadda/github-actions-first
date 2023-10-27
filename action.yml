@@ -15,7 +15,7 @@ runs:
     - name: Perform operation
       shell: bash
       run: |
-        if [[ "${{ inputs.echo }}" == "true" ]]; then
+        if [[ "${{ inputs.echo }}" == "true" || "${{ inputs.echo | lower }}" == "true" ]]; then
           echo "operation=echo" >> $GITHUB_ENV
         else
           echo "operation=dontecho" >> $GITHUB_ENV
