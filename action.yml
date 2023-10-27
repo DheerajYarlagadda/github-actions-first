@@ -12,14 +12,16 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: check boolean input
-      if: ${{ inputs.echo == 'true' }}
+    - name: Perform operation
       shell: bash
       run: |
-        echo "operation=echo" >> $GITHUB_ENV
+        if [[ "${{ inputs.echo }}" == "true" ]]; then
+          echo "operation=echo" >> $GITHUB_ENV
+        else
+          echo "operation=dontecho" >> $GITHUB_ENV
+        fi
 
-    - name: perform operation
-      if: ${{ inputs.echo == 'true' }}
+    - name: Print operation
       shell: bash
       run: |
         echo "${{ env.operation }}ing your name: ${{ inputs.name }}"
