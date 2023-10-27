@@ -7,7 +7,7 @@
     echo:
       description: a boolean flag
       required: true
-      default: "false"
+      default: false
 
 
   runs:
