@@ -12,15 +12,24 @@ runs:
   using: composite
   steps:
     - name: Perform operation
-      shell: bash
+      shell: python
       run: |
-        if [[ "${{ inputs.echo }}" == "true" ]]; then
-          echo "operation=echo" >> $GITHUB_ENV
-        else
-          echo "operation=dontecho" >> $GITHUB_ENV
-        fi
+        import os
+
+        if os.getenv('INPUT_ECHO') == 'true':
+            operation = 'echo'
+        else:
+            operation = 'dontecho'
+
+        # Set the environment variable
+        os.environ['operation'] = operation
 
     - name: Print operation
-      shell: bash
+      shell: python
       run: |
-        echo "${{ env.operation }}ing your name: ${{ inputs.name }}"
+        import os
+
+        operation = os.getenv('operation')
+        name = os.getenv('INPUT_NAME')
+
+        print(f"{operation}ing your name: {name}")
