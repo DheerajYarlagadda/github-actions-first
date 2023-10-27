@@ -14,13 +14,13 @@
     using: composite
     steps:
       - name: check boolean input
-        if: '${{ inputs.echo = "true" }}'
+        if: '${{ inputs.echo }}'
         shell: bash
         run: |
           echo "operation=echo" >> $env:GITHUB_ENV
 
       - name: perform operation
-        if: '${{ inputs.echo = "true" }}'
+        if: '${{ inputs.echo }}'
         shell: bash
         run: |
           echo "{{ env.operation }}ing your name: ${{ inputs.name }}"
