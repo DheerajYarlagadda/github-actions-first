@@ -1,4 +1,4 @@
-choname: build, test and deploy installer package test
+name: build, test and deploy installer package test
 
 on:
   push
