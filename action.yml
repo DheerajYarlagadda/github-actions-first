@@ -7,7 +7,6 @@ inputs:
   echo:
     description: a boolean flag
     required: true
-    default: false
 
 runs:
   using: composite
@@ -15,7 +14,7 @@ runs:
     - name: Perform operation
       shell: bash
       run: |
-        if [[ "${{ inputs.echo }}" == "true" || "${{ inputs.echo }}" == "True" || "${{ inputs.echo | toLower }}" == "true" ]]; then
+        if [[ "${{ inputs.echo }}" == "true" ]]; then
           echo "operation=echo" >> $GITHUB_ENV
         else
           echo "operation=dontecho" >> $GITHUB_ENV
