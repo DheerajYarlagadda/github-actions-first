@@ -23,4 +23,4 @@
         if: '${{ inputs.echo }}'
         shell: bash
         run: |
-          echo "{{ env.operation }}ing your name: ${{ inputs.name }}"
+          echo "${{ env.operation }}ing your name: ${{ inputs.name }}"
