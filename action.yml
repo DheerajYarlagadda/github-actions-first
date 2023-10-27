@@ -1,26 +1,25 @@
-  name: dheeraj test
-  description: just to check and get familiarize
-  inputs:
-    name:
-      description: my name
-      required: true
-    echo:
-      description: a boolean flag
-      required: true
-      default: false
+name: dheeraj test
+description: just to check and get familiarize
+inputs:
+  name:
+    description: my name
+    required: true
+  echo:
+    description: a boolean flag
+    required: true
+    default: false
 
+runs:
+  using: composite
+  steps:
+    - name: check boolean input
+      if: ${{ inputs.echo == 'true' }}
+      shell: bash
+      run: |
+        echo "operation=echo" >> $GITHUB_ENV
 
-  runs:
-    using: composite
-    steps:
-      - name: check boolean input
-        if: '${{ inputs.echo == "true" }}'
-        shell: bash
-        run: |
-          echo "operation=echo" >> $env:GITHUB_ENV
-
-      - name: perform operation
-        if: '${{ inputs.echo == "true" }}'
-        shell: bash
-        run: |
-          echo "${{ env.operation }}ing your name: ${{ inputs.name }}"
+    - name: perform operation
+      if: ${{ inputs.echo == 'true' }}
+      shell: bash
+      run: |
+        echo "${{ env.operation }}ing your name: ${{ inputs.name }}"
