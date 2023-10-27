@@ -1,4 +1,4 @@
-name: build, test and deploy installer package test
+choname: build, test and deploy installer package test
 
 on:
   push
@@ -19,4 +19,4 @@ jobs:
         uses: ./uploadAction
         with:
           name: Dheeraj
-          
+          echo: true
