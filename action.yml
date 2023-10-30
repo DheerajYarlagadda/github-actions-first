@@ -11,6 +11,14 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: testing powershell
+      shell: powershell
+      run: |
+        if(${{ inputs.echo }}) {
+          echo "Dheeraj"
+        }else {
+          echo "false"
+        }
     - name: Perform operation
       shell: python
       run: |
