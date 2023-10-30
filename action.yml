@@ -14,7 +14,7 @@ runs:
     - name: testing powershell
       shell: powershell
       run: |
-        if($(${{ inputs.echo }})) {
+        if($${{ inputs.echo }}) {
           echo "Dheeraj"
         }else {
           echo "false"
