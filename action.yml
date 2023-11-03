@@ -15,29 +15,24 @@ runs:
       shell: powershell
       run: |
         if($${{ inputs.echo }}) {
-          echo "Dheeraj"
+          $cmd="echo ${{ inputs.name }}"
         }else {
-          echo "false"
+          $cmd="echo 'Nothing to echo'"
         }
+        echo "::set-output name=cmd::$cmd"
     - name: Perform operation
-      shell: python
+      env: 
+      shell: powershell
       run: |
-        import os
+        $command=${{ env.cmd }}
+        echo $command
 
-        if os.getenv('INPUT_ECHO') == 'true':
-            operation = 'echo'
-        else:
-            operation = 'dontecho'
+    # - name: Print operation
+    #   shell: python
+    #   run: |
+    #     import os
 
-        # Set the environment variable
-        os.environ['operation'] = operation
+    #     operation = os.getenv('operation')
+    #     name = os.getenv('INPUT_NAME')
 
-    - name: Print operation
-      shell: python
-      run: |
-        import os
-
-        operation = os.getenv('operation')
-        name = os.getenv('INPUT_NAME')
-
-        print(f"{operation}ing your name: {name}")
+    #     print(f"{operation}ing your name: {name}")
