@@ -12,6 +12,7 @@ runs:
   using: composite
   steps:
     - name: testing powershell
+      id: setEnv
       shell: powershell
       run: |
         if($${{ inputs.echo }}) {
@@ -21,9 +22,11 @@ runs:
         }
         echo "::set-output name=cmd::$cmd"
     - name: Perform operation
+      env: 
+        CMD: ${{ steps.setEnv.outputs.cmd }}
       shell: powershell
       run: |
-        $command=${{ env.cmd }}
+        $command=${{ env.CMD }}
         echo $command
 
     # - name: Print operation
