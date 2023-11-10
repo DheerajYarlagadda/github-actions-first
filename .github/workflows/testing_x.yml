@@ -16,7 +16,7 @@ jobs:
           path: uploadAction
 
       - name: tree workspace
-        if: ${{ env.ACTIONS_STEP_DEBUG }}
+        if: ${{ env.ACTIONS_STEP_DEBUG }}==true
         shell: powershell
         run: |
           tree ${{ github.workspace }} 
