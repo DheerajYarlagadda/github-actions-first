@@ -21,6 +21,13 @@ runs:
           $cmd="echo 'Nothing to echo'"
         }
         echo "::set-output name=cmd::$cmd"
+
+    - name: tree workspace
+      if: ${{ env.ACTIONS_STEP_DEBUG }}==true || ${{ env.ACTIONS_RUNNER_DEBUG }}==true
+      shell: powershell
+      run: |
+      tree ${{ github.workspace }}
+      
     - name: Perform operation
       env: 
         CMD: ${{ steps.setEnv.outputs.cmd }}
