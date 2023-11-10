@@ -15,9 +15,8 @@ jobs:
         with:
           path: uploadAction
 
-      - name: perform action
-        uses: ./uploadAction
-        with:
-          name: Dheeraj
-          echo: true
+      - name: tree workspace
+        shell: powershell
+        run: |
+          tree ${{ github.workspace }} 
   
