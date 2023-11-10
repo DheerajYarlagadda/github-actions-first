@@ -15,9 +15,8 @@ jobs:
         with:
           path: uploadAction
 
-      - name: tree workspace
-        if: ${{ env.ACTIONS_STEP_DEBUG }}==true || ${{ env.ACTIONS_RUNNER_DEBUG }}==true
-        shell: powershell
-        run: |
-          tree ${{ github.workspace }} 
-  
+      - name: run action
+        uses: ./uploadAction
+        with:
+          name: Dheeraj
+          echo: true
