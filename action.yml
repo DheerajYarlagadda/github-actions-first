@@ -64,8 +64,9 @@ runs:
       if: ${{ runner.os == 'Windows'}}
       shell: powershell
       run: |
-        myOutput=$(/bin/echo "${{ steps.run.outputs.python_output }}" | jq -r .)
-        echo "Python script output: $myOutput"
+        $myOutput=${{ steps.run.outputs.python_output }}
+        $formattedOut=$myOutput | ConvertFrom-Json
+        echo "Python script output: $formattedOut"
 
     - name: Use Python output
       if: ${{ runner.os == 'Linux'}}
