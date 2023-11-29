@@ -16,7 +16,11 @@ jobs:
           path: uploadAction
 
       - name: run action
+        id: dheeraj
         uses: ./uploadAction
         with:
           name: Dheeraj
           echo: true
+
+      - name: check output
+        run: echo ${{ steps.dheeraj.outputs.my_dict }}
