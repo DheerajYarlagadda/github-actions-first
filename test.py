@@ -1,7 +1,5 @@
-from artifactory import ArtifactoryPath
 from argparse import ArgumentParser
-from urllib.parse import unquote
-import json
+
 
 parser = ArgumentParser()
 parser.add_argument('-u', '--username', action='store', type=str, required=True)
