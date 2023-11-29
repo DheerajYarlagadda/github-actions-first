@@ -51,7 +51,7 @@ runs:
 
     - name: Run Python script
       if: ${{ runner.os == 'Linux'}}
-      id: run
+      id: run1
       shell: bash
       run: |
         $output="python ${{ github.workspace }}/repo/test.py"
@@ -61,3 +61,4 @@ runs:
       shell: powershell
       run: |
         echo "Python script output: ${{ steps.run.outputs.python_output }}"
+        echo "Python script output: ${{ steps.run1.outputs.python_output }}"
