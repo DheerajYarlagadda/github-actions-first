@@ -64,10 +64,10 @@ runs:
       if: ${{ runner.os == 'Windows'}}
       shell: powershell
       run: |
-        echo "Python script output: ${{ steps.run.outputs.python_output }}"
+        echo "Python script output: ${{ steps.run.outputs.python_output | fromJson }}"
 
     - name: Use Python output
       if: ${{ runner.os == 'Linux'}}
       shell: bash
       run: |
-        echo "Python script output: ${{ steps.run1.outputs.python_output | fromJson }}"
+        echo "Python script output: ${{ steps.run1.outputs.python_output }}"
