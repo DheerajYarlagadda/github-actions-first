@@ -45,7 +45,7 @@ runs:
       id: run
       shell: powershell
       run: |
-        output=$(python ${{ github.workspace }}/repo/test.py)
+        $output=Invoke-Expression -Command "python ${{ github.workspace }}/repo/test.py"
         echo "::set-output name=python_output::$output"
 
     - name: Use Python output
