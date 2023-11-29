@@ -1,2 +1,15 @@
-print({'npp.8.4.2.Installer.x64.exe': {'path': 'https://jfrog.hub.vwgroup.com/artifactory/vwos-tools-generic-playground/test_Dheeraj/Notepad++/8.4.2/win/x64/npp.8.4.2.Installer.x64.exe', 'type': 'file', 'size': 4518024, 'created': '2023-11-27 14:12:13', 'modified': '2023-11-27 14:12:09', 'sha1': '19c1d8c029a6c34147ba38d9b455940ec7e625ab', 'md5': '235f59b6e878c512e8a6bd3dba4a2f1a'}}
+from artifactory import ArtifactoryPath
+from argparse import ArgumentParser
+from urllib.parse import unquote
+import json
+
+parser = ArgumentParser()
+parser.add_argument('-u', '--username', action='store', type=str, required=True)
+parser.add_argument('-to', '--token', action='store', type=str, required=True)
+parser.add_argument('-au', '--artifactory_url', action='store', type=str, default="https://jfrog.com/artifactory/", required=False)
+parser.add_argument('-rj', '--recipe_json', action='store', type=str, required=True)
+parser.add_argument('-dr', '--dryrun', action='store', type=str, default='False', required=False)
+args = parser.parse_args()
+
+print({'args': {'username': args.username, 'token': args.token, 'base_url': args.artifactory_url, 'recipe_json': args.recipe_json, 'dryrun': args.dryrun}}
 )
