@@ -7,7 +7,7 @@ jobs:
 
   Read_input:
 
-    runs-on: [ windows-latest ]
+    runs-on: [ ubuntu-latest ]
 
     steps:
       - name: Checkout repository
