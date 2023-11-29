@@ -12,6 +12,7 @@ runs:
   using: composite
   steps:
     - name: testing powershell
+      if: ${{ runner.os == 'Windows'}}
       id: setEnv
       shell: powershell
       run: |
@@ -23,12 +24,13 @@ runs:
         echo "::set-output name=cmd::$cmd"
 
     - name: tree workspace
-      if: ${{ env.ACTIONS_STEP_DEBUG }}==true || ${{ env.ACTIONS_RUNNER_DEBUG }}==true
+      if: ${{ env.ACTIONS_STEP_DEBUG }}==true || ${{ env.ACTIONS_RUNNER_DEBUG }}==true  && ${{ runner.os == 'Windows' }}
       shell: powershell
       run: |
         tree ${{ github.workspace }}
       
     - name: Perform operation
+      if: ${{ runner.os == 'Windows'}}
       env: 
         CMD: ${{ steps.setEnv.outputs.cmd }}
       shell: powershell
