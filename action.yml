@@ -23,11 +23,11 @@ runs:
         }
         echo "::set-output name=cmd::$cmd"
 
-    - name: tree workspace
-      if: ${{ runner.os == 'Windows' }} && ${{ env.ACTIONS_STEP_DEBUG }}==true || ${{ env.ACTIONS_RUNNER_DEBUG }}==true  
-      shell: powershell
-      run: |
-        tree ${{ github.workspace }}
+    # - name: tree workspace
+    #   if: ${{ env.ACTIONS_STEP_DEBUG }}==true || ${{ env.ACTIONS_RUNNER_DEBUG }}==true  
+    #   shell: powershell
+    #   run: |
+    #     tree ${{ github.workspace }}
       
     - name: Perform operation
       if: ${{ runner.os == 'Windows'}}
