@@ -49,8 +49,7 @@ runs:
       shell: powershell
       run: |
         $output=Invoke-Expression -Command "python ${{ github.workspace }}/repo/test.py --username 'DHEERAJ' --token 'SOMETHING' --artifactory_url 'JFROG.com'--recipe_json 'My_Dir/My_Path' --dryrun 'True'"
-        $jsonOutput=$output | ConvertTo-Json
-        echo "::set-output name=python_output::$jsonOutput"
+        echo "::set-output name=python_output::$output"
 
     - name: Run Python script
       if: ${{ runner.os == 'Linux'}}
