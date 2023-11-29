@@ -42,10 +42,19 @@ runs:
           path: repo
 
     - name: Run Python script
+      if: ${{ runner.os == 'Windows'}}
       id: run
       shell: powershell
       run: |
         $output=Invoke-Expression -Command "python ${{ github.workspace }}/repo/test.py"
+        echo "::set-output name=python_output::$output"
+
+    - name: Run Python script
+      if: ${{ runner.os == 'Linux'}}
+      id: run
+      shell: bash
+      run: |
+        $output="python ${{ github.workspace }}/repo/test.py"
         echo "::set-output name=python_output::$output"
 
     - name: Use Python output
