@@ -64,7 +64,7 @@ runs:
       if: ${{ runner.os == 'Windows'}}
       shell: powershell
       run: |
-        $stepOutput=${{ toJSON(steps.run.outputs.python_output) }}
+        stepOutput=${{ toJSON(steps.run.outputs.python_output) }}
         echo "Python script output: $stepOutput"
 
     - name: Use Python output
