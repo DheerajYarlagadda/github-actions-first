@@ -42,10 +42,13 @@ runs:
           path: repo
 
     - name: Run Python script
+      id: run
+      shell: powershell
       run: |
         output=$(python ${{ github.workspace }}/repo/test.py)
         echo "::set-output name=python_output::$output"
 
     - name: Use Python output
+      shell: powershell
       run: |
         echo "Python script output: ${{ steps.run.outputs.python_output }}"
