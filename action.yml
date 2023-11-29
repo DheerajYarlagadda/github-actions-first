@@ -36,12 +36,16 @@ runs:
         $command=${{ env.CMD }}
         echo $command
 
-    # - name: Print operation
-    #   shell: python
-    #   run: |
-    #     import os
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+          path: repo
 
-    #     operation = os.getenv('operation')
-    #     name = os.getenv('INPUT_NAME')
+    - name: Run Python script
+      run: |
+        output=$(python ${{ github.workspace }}/repo/test.py)
+        echo "::set-output name=python_output::$output"
 
-    #     print(f"{operation}ing your name: {name}")
+    - name: Use Python output
+      run: |
+        echo "Python script output: ${{ steps.run.outputs.python_output }}"
