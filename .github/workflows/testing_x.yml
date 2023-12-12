@@ -35,9 +35,7 @@ jobs:
 
       - name: change env name
         if: steps.some.outcome == 'success'
-        run: echo "Modifying MY_VARIABLE in this step"
-        env:
-          name: "Dheeraj"
+        run: echo "::set-env name=name::'Dheeraj'"
 
       - name: echo name
         run: echo "Hello $env:name!"
