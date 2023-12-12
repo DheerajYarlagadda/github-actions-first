@@ -35,7 +35,7 @@ jobs:
 
       - name: change env name
         if: steps.some.outcome == 'success'
-        run: echo "::set-env name=name::'Dheeraj'"
+        run: echo "name=Dheeraj" >> $GITHUB_ENV
 
       - name: echo name
         run: echo "Hello $env:name!"
