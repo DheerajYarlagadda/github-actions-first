@@ -2,14 +2,11 @@ name: build, test and deploy installer package test
 
 on:
   push
-
-env:
-  name: "samyuktha"
   
 jobs:
-
   Read_input:
-
+    env:
+      name: "samyuktha"
     runs-on: [ windows-latest ]
 
     steps:
