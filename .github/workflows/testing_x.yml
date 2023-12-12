@@ -37,18 +37,15 @@ jobs:
       - name: Create JSON file
         run: |
           if ('${{ steps.some.outcome }}' -eq 'success'){
-            $jsonObject1 = @{
-                    operation = "copy"
-                    source = "vwos-tools-generic-exchange/$package"
-                    target = "vwos-tools-generic-playground/$package"
-            }
+            $operation="copy"
           }else{
-            $jsonObject1 = @{
-                    operation = "paste"
+            $operation="paste"
+          }
+          $jsonObject1 = @{
+                    operation = $operation
                     source = "vwos-tools-generic-exchange/$package"
                     target = "vwos-tools-generic-playground/$package"
             }
-          }
           $jsonContent = $jsonObject1 | ConvertTo-Json
           $jsonContent | Set-Content -Path ".\recipe.json"
               
