@@ -31,5 +31,5 @@ jobs:
         continue-on-error: true 
 
       - name: echo hello dheeraj
-        if: steps.some.output == 'success'
+        if: steps.some.outcome == 'success'
         run: echo "Hello Dheeraj!"
