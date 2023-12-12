@@ -27,7 +27,7 @@ jobs:
 
       - name: exit or not
         id: some
-        run: exit 1
+        run: exit 0
         continue-on-error: true 
 
       - name: echo hello dheeraj
