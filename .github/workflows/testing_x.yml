@@ -50,7 +50,6 @@ jobs:
             }
           }
           $jsonContent = $jsonObject1 | ConvertTo-Json
-          $jsonContent = "[" + ($jsonContent -replace '\[|\]') + "]"
           $jsonContent | Set-Content -Path ".\recipe.json"
               
 
