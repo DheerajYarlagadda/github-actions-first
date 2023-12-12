@@ -3,6 +3,9 @@ name: build, test and deploy installer package test
 on:
   push
 
+env:
+  name: "samyuktha"
+  
 jobs:
 
   Read_input:
@@ -32,4 +35,6 @@ jobs:
 
       - name: echo hello dheeraj
         if: steps.some.outcome == 'success'
-        run: echo "Hello Dheeraj!"
+        run: |
+          $env:name="Dheeraj"
+          echo "Hello $env:name!"
