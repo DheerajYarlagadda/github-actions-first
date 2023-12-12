@@ -35,8 +35,25 @@ jobs:
         if: steps.some.outcome == 'success'
 
       - name: Create JSON file
-        run: echo { "key1": "value1", "key2": "value2" } > mydata.json
+        run: |
+          if (${{ steps.some.outcome }} -eq 'success'){
+            $jsonObject1 = @{
+                    operation = "copy"
+                    source = "vwos-tools-generic-exchange/$package"
+                    target = "vwos-tools-generic-playground/$package"
+            }
+          }else{
+            $jsonObject1 = @{
+                    operation = "paste"
+                    source = "vwos-tools-generic-exchange/$package"
+                    target = "vwos-tools-generic-playground/$package"
+            }
+          }
+          $jsonContent = $jsonObject1 | ConvertTo-Json
+          $jsonContent = "[" + ($jsonContent -replace '\[|\]') + "]"
+          $jsonContent | Set-Content -Path ".\recipe.json"
+              
 
       - name: Display JSON content
-        run: type mydata.json
+        run: type .\recipe.json
         
