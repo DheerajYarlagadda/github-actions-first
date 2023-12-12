@@ -34,7 +34,7 @@ jobs:
         continue-on-error: true 
 
       - name: change env name
-        run: "${{ env:name }}='Dheeraj'"
+        run: "${{ env.name }}='Dheeraj'"
         if: steps.some.outcome == 'success'
 
       - name: echo name
