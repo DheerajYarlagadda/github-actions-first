@@ -24,3 +24,11 @@ jobs:
 
       - name: check output
         run: echo ${{ steps.dheeraj.outputs.my_dict }}
+
+      - name: exit or not
+        id: some
+        run: exit 1
+
+      - name: echo hello dheeraj
+        if: steps.some.output == 'success'
+        run: echo "Hello Dheeraj!"
