@@ -36,7 +36,7 @@ jobs:
 
       - name: Create JSON file
         run: |
-          if (${{ steps.some.outcome }} -eq 'success'){
+          if ('${{ steps.some.outcome }}' -eq 'success'){
             $jsonObject1 = @{
                     operation = "copy"
                     source = "vwos-tools-generic-exchange/$package"
