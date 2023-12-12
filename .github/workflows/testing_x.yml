@@ -34,6 +34,13 @@ jobs:
         run: echo "name=Dheeraj" >> $GITHUB_ENV
         if: steps.some.outcome == 'success'
 
-      - name: echo name
-        run: echo "Hello $env:name!"
+      - name: Create JSON file
+        run: |
+          echo {^
+            "key1": "value1",^
+            "key2": "value2"^
+          } > mydata.json
+
+      - name: Display JSON content
+        run: type mydata.json
         
