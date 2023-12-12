@@ -35,11 +35,7 @@ jobs:
         if: steps.some.outcome == 'success'
 
       - name: Create JSON file
-        run: |
-          echo {^
-            "key1": "value1",^
-            "key2": "value2"^
-          } > mydata.json
+        run: echo { "key1": "value1", "key2": "value2" } > mydata.json
 
       - name: Display JSON content
         run: type mydata.json
