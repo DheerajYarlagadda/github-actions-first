@@ -34,8 +34,8 @@ jobs:
         continue-on-error: true 
 
       - name: change env name
-        if: steps.some.outcome == 'success'
         run: echo "name=Dheeraj" >> $GITHUB_ENV
+        if: steps.some.outcome == 'success'
 
       - name: echo name
         run: echo "Hello $env:name!"
