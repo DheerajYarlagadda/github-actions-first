@@ -34,14 +34,14 @@ runs:
     #   run: |
     #     tree ${{ github.workspace }}
       
-    - name: Perform operation
-      if: ${{ runner.os == 'Windows'}}
-      env: 
-        CMD: ${{ steps.setEnv.outputs.cmd }}
-      shell: powershell
-      run: |
-        $command=${{ env.CMD }}
-        echo $command
+    # - name: Perform operation
+    #   if: ${{ runner.os == 'Windows'}}
+    #   env: 
+    #     CMD: ${{ steps.setEnv.outputs.cmd }}
+    #   shell: powershell
+    #   run: |
+    #     $command=${{ env.CMD }}
+    #     echo $command
 
     - name: Checkout code
       uses: actions/checkout@v2
