@@ -22,9 +22,9 @@ runs:
       shell: powershell
       run: |
         if($${{ inputs.echo }}) {
-          $cmd="echo ${{ inputs.name }}"
+          $cmd="Hi ${{ inputs.name }}"
         }else {
-          $cmd="echo 'Nothing to echo'"
+          $cmd="echo 'Nothing to say'"
         }
         echo "::set-output name=cmd::$cmd"
 
@@ -51,11 +51,12 @@ runs:
     - name: Run Python script
       if: ${{ runner.os == 'Windows'}}
       id: run
+      env: 
+        CMD: ${{ steps.setEnv.outputs.cmd }}
       shell: powershell
       run: |
-        $output=Invoke-Expression -Command "python ${{ github.workspace }}/repo/test.py --username 'DHEERAJ' --token 'SOMETHING' --artifactory_url 'JFROG.com'--recipe_json 'My_Dir/My_Path' --dryrun 'True'"
-        $jsonOutput=$output | ConvertTo-Json
-        echo "::set-output name=python_output::$jsonOutput"
+        $output=Invoke-Expression -Command "python ${{ github.workspace }}/repo/test.py"
+        echo $output
 
     - name: Run Python script
       if: ${{ runner.os == 'Linux'}}
