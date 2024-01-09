@@ -2,11 +2,14 @@ name: build, test and deploy installer package test
 
 on:
   push
-  
+
+env:
+  name: "samyuktha"
+  ACTIONS_RUNNER_DEBUG: ${{ vars.ACTIONS_RUNNER_DEBUG }}
+  ACTIONS_STEP_DEBUG: ${{ vars.ACTIONS_STEP_DEBUG }}
+      
 jobs:
   Read_input:
-    env:
-      name: "samyuktha"
     runs-on: [ windows-latest ]
 
     steps:
@@ -51,5 +54,6 @@ jobs:
               
 
       - name: Display JSON content
+        if: ${{ env.ACTIONS_STEP_DEBUG == true || env.ACTIONS_RUNNER_DEBUG == true }}
         run: type .\recipe.json
         
