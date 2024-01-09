@@ -70,7 +70,7 @@ runs:
       if: ${{ runner.os == 'Windows'}}
       shell: powershell
       run: |
-        $myOutput= ConvertFrom-Json '${{ steps.run.outputs.python_output }}'
+        $myOutput='${{ steps.run.outputs.python_output }}'
         echo "Python script output: $myOutput"
 
     - name: Use Python output
