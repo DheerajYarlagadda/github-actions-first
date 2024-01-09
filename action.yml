@@ -56,7 +56,7 @@ runs:
       shell: powershell
       run: |
         $output=Invoke-Expression -Command "python ${{ github.workspace }}/repo/test.py"
-        echo $output
+        echo "::set-output name=python_output::$output"
 
     - name: Run Python script
       if: ${{ runner.os == 'Linux'}}
