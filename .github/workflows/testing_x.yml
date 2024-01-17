@@ -1,8 +1,8 @@
 name: build, test and deploy installer package test
 
 on:
-  push
-
+  push:
+  
 env:
   name: "samyuktha"
   ACTIONS_RUNNER_DEBUG: ${{ vars.ACTIONS_RUNNER_DEBUG }}
