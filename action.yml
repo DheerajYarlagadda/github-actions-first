@@ -63,7 +63,7 @@ runs:
       id: run1
       shell: bash
       run: |
-        $output=$(python3 ${{ github.workspace }}/repo/test.py)
+        output="This is Linux step"
         echo "::set-output name=python_output::$output"
 
     - name: Use Python output
