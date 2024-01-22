@@ -11,7 +11,7 @@ inputs:
 outputs:
   my_dict:
     description: 'Path to the vpf-repository'
-    value: ${{ steps.run.outputs.python_output }} || ${{ steps.run1.outputs.python_output}}
+    value: ${{ steps.run.outputs.python_output }} ${{ steps.run1.outputs.python_output}}
 
 runs:
   using: composite
