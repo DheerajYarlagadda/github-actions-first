@@ -83,7 +83,7 @@ runs:
       if: ${{ runner.os == 'Windows'}}
       shell: powershell
       run: |
-        if ($RUNNER_DEBUG == 1) {
+        if ($env.RUNNER_DEBUG -eq 1) {
           echo "in debug mode"
         } else {
           echo "not in debug mode"
