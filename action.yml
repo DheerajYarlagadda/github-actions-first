@@ -80,7 +80,7 @@ runs:
         echo "Python script output: ${{ steps.run1.outputs.python_output }}"
 
     - name: debug status
-      if: ${{ runner.os == 'Windows'}
+      if: ${{ runner.os == 'Windows'}}
       shell: powershell
       run: |
         if (${{ runner.debug }} == 1) {
