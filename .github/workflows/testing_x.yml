@@ -7,7 +7,7 @@ env:
   name: "samyuktha"
   ACTIONS_RUNNER_DEBUG: ${{ vars.ACTIONS_RUNNER_DEBUG }}
   ACTIONS_STEP_DEBUG: ${{ vars.ACTIONS_STEP_DEBUG }}
-  RUNNER_DEBUG: ${{ runner.debug }}
+
       
 jobs:
   Read_input:
