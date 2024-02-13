@@ -78,3 +78,13 @@ runs:
       shell: bash
       run: |
         echo "Python script output: ${{ steps.run1.outputs.python_output }}"
+
+    - name: debug status
+      if: ${{ runner.os == 'Windows'}
+      shell: powershell
+      run: |
+        if ({{ runner.debug }} == 1) {
+          echo "in debug mode"
+        } else {
+          echo "not in debug mode"
+        }
