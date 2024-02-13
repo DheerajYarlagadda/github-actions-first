@@ -83,6 +83,10 @@ runs:
       if: runner.debug == '1'
       shell: powershell
       run: |
+        $debug = '${{ runner.debug }}'
+        if ($debug -eq '1') {
+          echo "inside if loop"
+        }
         echo "in debug mode"
     
     - name: debug status
