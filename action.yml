@@ -89,4 +89,4 @@ runs:
       if: runner.debug != '1'
       shell: powershell
       run: |
-      echo "not in debug mode"
+        echo "not in debug mode"
