@@ -10,7 +10,7 @@ jobs:
       - name: run job a
         run: |
           echo "running job a somehwere"
-          exit 1
+          exit 0
 
   job-b:
     runs-on: ubuntu-latest
