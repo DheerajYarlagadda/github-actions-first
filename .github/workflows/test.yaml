@@ -3,6 +3,46 @@ on: push
 
 
 jobs:
+  generate-build-number:
+    runs-on: ubuntu-latest
+    outputs:
+      build_config_json: ${{ steps.get_build_config.outputs.build_config }}
+    steps:
+      - name: Generate Build Config
+        id: get_build_config
+        run: |
+          echo '{"version": "1.0.0", "build": 123}' > build_config.json
+          echo "::set-output name=build_config::$(cat build_config.json)"
+
+  process-and-upload:
+    runs-on: ubuntu-latest
+    needs: generate-build-number
+    steps:
+      - name: Create buildConfig.json file
+        run: |
+          echo '${{ needs.generate-build-number.outputs.build_config_json }}' > buildConfig.json
+        shell: bash
+
+      - name: Upload buildConfig.json as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: buildConfig
+          path: buildConfig.json
+
+  downlaod-and-process:
+    runs-on: ubuntu-latest
+    needs: process-and-upload
+    steps: 
+    - name: downlaod  buildConfig.json artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: buildConfig
+        path: "${{ github.workspace }}/toolRepo"
+
+    - name: visualize output
+      run: |
+        ls "${{ github.workspace }}/toolRepo"
+
   job-a:
     if: true
     runs-on: ubuntu-latest
