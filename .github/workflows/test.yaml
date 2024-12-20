@@ -12,7 +12,7 @@ jobs:
   echo-hello-world:
      runs-on: windows-latest 
      needs: run-github-actions
-     if: ${{ success(run-github-actions) }}
+     if: ${{ success(needs.run-github-actions) }}
      steps:
        - name: echo Hello World
          run: |
