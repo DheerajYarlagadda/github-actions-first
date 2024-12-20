@@ -34,7 +34,7 @@ jobs:
     needs: process-and-upload
     steps: 
     - name: downlaod  buildConfig.json artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/download-artifact@v3
       with:
         name: buildConfig
         path: "${{ github.workspace }}/toolRepo"
