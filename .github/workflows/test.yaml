@@ -3,17 +3,34 @@ on: push
 
 
 jobs:
-  run-github-actions: 
-    runs-on: windows-latest 
+  job-a:
+    if: true
+    runs-on: ubuntu-latest
     steps:
-      - name: testing variables 
+      - name: run job a
         run: |
-          echo ${{ github.workspace }} 
-  echo-hello-world:
-     runs-on: windows-latest 
-     needs: run-github-actions
-     if: ${{ success(needs.run-github-actions) }}
-     steps:
-       - name: echo Hello World
-         run: |
-           echo "Hello world"
+          echo "running job a somehwere"
+          exit 0
+
+  job-b:
+    runs-on: ubuntu-latest
+    if: false
+    steps:
+      - name: run job B 
+        run: |
+          echo "running job a somehwere"
+          exit 0
+
+  job-ab:
+    name: Job AB
+    runs-on: ubuntu-latest
+    needs: [ job-a, job-b ]
+    if: |
+      always()
+      && contains(needs.*.result, 'success')
+      && !contains(needs.*.result, 'failure')
+    steps:
+      - name: run job ab
+        run: |
+          echo "running job a somehwere"
+          exit 0
