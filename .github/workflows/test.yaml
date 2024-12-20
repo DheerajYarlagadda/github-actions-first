@@ -1,5 +1,5 @@
 name: Test
-on: [ pull_request]
+on: push
 
 
 jobs:
@@ -9,3 +9,11 @@ jobs:
       - name: testing variables 
         run: |
           echo ${{ github.workspace }} 
+  echo-hello-world:
+     runs-on: windows-latest 
+     needs: run-github-actions
+     if: ${{ success(run-github-actions) }}
+     steps:
+       - name: echo Hello World
+         run: |
+           echo "Hello world"
